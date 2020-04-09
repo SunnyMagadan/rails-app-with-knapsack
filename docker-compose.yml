@@ -7,7 +7,15 @@ services:
       - redis:redis
     environment:
       REDIS_URL: redis://redis
-      RAILS_ENV: test
+      RAILS_ENV:
+      CI:
+      BUILDKITE_PARALLEL_JOB:
+      BUILDKITE_PARALLEL_JOB_COUNT:
+      BUILDKITE_COMMIT:
+      BUILDKITE_BRANCH:
+      BUILDKITE_REPO:
+      BUILDKITE_BUILD_ID:
+      BUILDKITE_BUILD_NUMBER:
     ports:
       - "5000:5000"
     entrypoint: wait-for-it.sh redis:6379 -s --
